@@ -1,0 +1,33 @@
+.header {
+  border: 1px;
+  border-radius: 0.5rem;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  padding: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.headerRight {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  align-items: flex-start;
+  width: 22%;
+  height: auto;
+  cursor: pointer;
+}
+
+.time {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo {
+    width: 50%;
+    height: auto;
+  }
+}

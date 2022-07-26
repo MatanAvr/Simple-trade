@@ -1,0 +1,21 @@
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  /* border: 1px solid red; */
+  justify-content: center;
+}
+
+.searchBar input {
+  border-radius: 5px;
+}
+.searchBar input:autofill {
+  color: red;
+}
+
+.searchBar input:focus {
+  /* border-color: blue; */
+  background-color: rgba(0, 123, 255, 0.25);
+}
+.searchBar img {
+  height: 20px;
+}

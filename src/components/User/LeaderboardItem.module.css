@@ -1,0 +1,50 @@
+.ul {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  justify-content: space-between;
+  list-style: none;
+  padding-inline-start: unset;
+  margin: 2px 0;
+}
+
+.ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  font-size: small;
+  border: 1px solid black;
+  padding: 1%;
+  border-radius: 10px;
+  margin-top: 10px;
+  height: 35px;
+}
+
+/* Gold */
+.ul li:nth-child(1) {
+  background: rgba(255, 215, 0, 0.6);
+}
+/* Silver */
+.ul li:nth-child(2) {
+  background: rgba(192, 192, 192, 0.6);
+}
+/* Bronze */
+.ul li:nth-child(3) {
+  background: rgba(205, 127, 50, 0.6);
+}
+
+.mark {
+  background: rgba(0, 99, 132, 0.6);
+  font-weight: bold;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}

@@ -1,0 +1,29 @@
+.graphContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.graphUI {
+  display: flex;
+  width: auto;
+  flex-direction: row;
+  justify-content: center;
+  border: 1px solid rgba(0, 99, 132, 01);
+  border-radius: 10px;
+  background-color: rgba(0, 99, 132, 0.25);
+}
+.chart {
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .graphUI {
+    width: 90%;
+  }
+  .chart {
+    height: 250px;
+  }
+}

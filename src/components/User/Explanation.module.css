@@ -1,0 +1,10 @@
+.middleCard {
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  align-items: center;
+}
+.p {
+  width: 100%;
+  margin: 5px 10px;
+}

@@ -1,0 +1,77 @@
+.regular {
+  margin: 0.25rem 0.25rem;
+  min-width: 25px;
+  color: rgba(0, 99, 132); /* (0, 123, 255) */
+  padding: 4px 4px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  size: 18px;
+}
+.navActive {
+  margin: 0.25rem 0.25rem;
+  min-width: 25px;
+  padding: 4px 4px;
+  height: 25px;
+  border-radius: 6px;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  size: 18px;
+  background-color: rgba(
+    0,
+    99,
+    132,
+    0.6
+  ); /* rgb(0, 99, 132)   (0, 123, 255, 0.8)*/
+  color: black;
+}
+
+.regular:hover {
+  background-color: rgba(0, 99, 132, 0.8);
+  color: whitesmoke;
+}
+
+.logout {
+  height: 30px;
+  padding: 0px 0.5% 0px;
+  background-color: rgba(240, 204, 204, 0.25);
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.logout:hover {
+  background-color: rgba(255, 0, 0, 0.15);
+}
+
+.icon {
+  margin: 0 5px;
+  min-height: 30px;
+  /* color: rgba(0, 123, 255); */
+  padding: 4px 4px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  size: 18px;
+}
+
+.icon:hover {
+  background-color: rgba(0, 99, 132, 0.8);
+  color: whitesmoke;
+}
+
+@media only screen and (max-width: 600px) {
+  .regular {
+    min-height: 35px;
+    min-width: 45px;
+  }
+
+  .navActive {
+    min-height: 35px;
+    min-width: 45px;
+  }
+}

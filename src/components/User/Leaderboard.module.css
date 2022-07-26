@@ -1,0 +1,35 @@
+.leaderboard {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.ul {
+  list-style: none;
+  max-height: 400px;
+  overflow: auto;
+  padding-inline-start: unset;
+  width: 80%;
+  margin: auto;
+}
+
+.ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: small;
+  text-align: left;
+  border: 1px solid black;
+  padding: 1%;
+  border-radius: 3px;
+  margin-top: 8px;
+  height: 30px;
+}
+
+.updateText {
+  margin-top: auto;
+  color: rgba(86, 92, 86, 0.8);
+  font-size: 12px;
+}

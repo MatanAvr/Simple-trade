@@ -9,7 +9,7 @@ const LeaderboardItem = (props) => {
   return (
     <ul className={classes.ul}>
       {leaderboardData.map((item, index) => {
-        const pl = item.interest.toFixed(2) * 100 - 100;
+        const pl = item.interest.toFixed(4) * 100 - 100;
         const cssClassName =
           item.username === authCtx.userData.name ? classes.mark : null;
         return (

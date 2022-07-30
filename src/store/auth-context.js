@@ -103,7 +103,6 @@ export const AuthContextProvider = (props) => {
     }
     setIsLoggedIn(false);
     setEmail("");
-    // setPassword("");
     setPortfolio([]);
     setUserData();
     setLeaderboard([]);
@@ -173,7 +172,6 @@ export const AuthContextProvider = (props) => {
 
     try {
       const response = await fetch(url, {
-        // mode: "cors",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -282,10 +280,8 @@ export const AuthContextProvider = (props) => {
       });
 
       const data = await response.json();
-
-      if (!response.ok) {
-        setError(true);
-        setErrorMsg(data.error);
+      if (!response.ok || data?.error) {
+        setIsLoggedIn(false);
         localStorage.removeItem("token");
         return;
       }

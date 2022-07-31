@@ -8,14 +8,25 @@
 .searchBar input {
   border-radius: 5px;
 }
-.searchBar input:autofill {
+/* .searchBar input:autofill {
   color: red;
-}
+} */
 
 .searchBar input:focus {
-  /* border-color: blue; */
   background-color: rgba(0, 123, 255, 0.25);
 }
 .searchBar img {
   height: 20px;
+}
+
+.note {
+  font-size: 0.8rem;
+  margin-top: 0px;
+  color: rgba(86, 92, 86, 1);
+}
+
+.error {
+  color: red;
+  border-color: red;
+  background-color: rgba(128, 0, 0, 0.2);
 }

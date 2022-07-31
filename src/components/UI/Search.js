@@ -5,11 +5,16 @@ import searchIcon from "../img/search.png";
 import Button from "./Button";
 import stocksArr from "../../store/stocksArr";
 
+// const english = /^[A-Za-z0-9-.]*$/;
+const english = /^[A-Za-z]*$/;
+
 const Search = (props) => {
   const authCtx = useContext(AuthContext);
   const [symbol, setSymbol] = useState("");
   const [stocksList, setStocksList] = useState("");
-
+  const [showModalOnce, setShowModalOnce] = useState(true);
+  const [inputError, setInputError] = useState(false);
+  const showNote = props.showNote ? true : false;
   useEffect(() => {});
 
   const updateStockList = (stockName) => {
@@ -24,11 +29,23 @@ const Search = (props) => {
 
   const changeHandler = (event) => {
     event.preventDefault();
+    setInputError(false);
+
+    console.log(english.test(event.target.value));
+    if (!english.test(event.target.value)) {
+      setInputError(true);
+      if (showModalOnce) {
+        authCtx.toggleError("Valid characters: A-Z/a-z");
+        setShowModalOnce(false);
+      }
+      return;
+    }
 
     if (event.type === "submit") {
       authCtx.loadTradeScreen(symbol);
       return;
     }
+
     if (timer) clearTimeout(timer); //clear existing timer
 
     if (event.target.value.trim().length === 0) {
@@ -44,34 +61,45 @@ const Search = (props) => {
   };
 
   return (
-    <form
-      className={classes.searchBar}
-      onSubmit={changeHandler}
-      autoComplete="off"
-    >
-      <input
-        name="stocklist"
-        list="stocks"
-        type="text"
-        minLength={1}
-        maxLength={6}
-        value={symbol}
-        onChange={changeHandler}
-      />
-      <datalist id="stocks" className={classes.autofill}>
-        {stocksList ? (
-          stocksList.map((element) => (
-            <option key={Math.random()} value={element} />
-          ))
-        ) : (
-          <option value="EMPTY" />
-        )}
-      </datalist>
+    <>
+      <form
+        className={classes.searchBar}
+        onSubmit={changeHandler}
+        autoComplete="off"
+      >
+        <input
+          className={inputError ? classes.error : ""}
+          name="stocklist"
+          list="stocks"
+          type="text"
+          minLength={1}
+          maxLength={6}
+          value={symbol}
+          onChange={changeHandler}
+        />
+        <datalist id="stocks" className={classes.autofill}>
+          {stocksList ? (
+            stocksList.map((element) => (
+              <option key={Math.random()} value={element} />
+            ))
+          ) : (
+            <option value="EMPTY" />
+          )}
+        </datalist>
 
-      <Button type="icon" onClick={authCtx.loadTradeScreen.bind(null, symbol)}>
-        <img alt="Search" src={searchIcon} draggable="false" />
-      </Button>
-    </form>
+        <Button
+          type="icon"
+          onClick={authCtx.loadTradeScreen.bind(null, symbol)}
+        >
+          <img alt="Search" src={searchIcon} draggable="false" />
+        </Button>
+      </form>
+      {showNote ? (
+        <p className={classes.note}>Valid symbol characters: A-Z/a-z</p>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
 

@@ -36,8 +36,8 @@ export default function AuthForm() {
       setTryToLogin(false);
       return;
     }
-    if (!signinForm && enteredName.trim().length < 4) {
-      setErrMsg("Name should be at least 4 characters long");
+    if (!signinForm && enteredName.trim().length < 3) {
+      setErrMsg("Name should be at least 3 characters long");
       setTryToLogin(false);
       return;
     }
@@ -97,8 +97,8 @@ export default function AuthForm() {
             <label>Name</label>
             <input
               type="text"
-              placeholder="At least 4 characters name"
-              minLength={4}
+              placeholder="At least 3 characters name"
+              minLength={3}
               onChange={(e) => {
                 setEnteredName(e.target.value);
               }}

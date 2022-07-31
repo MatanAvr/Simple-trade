@@ -60,24 +60,25 @@ const TradeForm = (props) => {
     setInit(false);
     setErrMsg("");
 
-    if (quantity < 1) {
-      setErrMsg("Something wrong with the quantity");
+    if (quantity < 1 || quantity % 1 !== 0) {
+      console.log(quantity & 1);
+      errMsgHandler("Quantity must be a whole number greater than 0");
       return;
     }
     if (orderType === "sell" && quantity > maxQuantity) {
-      setErrMsg("You dont have enough stocks");
+      errMsgHandler("You dont have enough stocks");
       return;
     }
     if (orderType === "buy" && orderValue > authCtx.userData.balance) {
-      setErrMsg("You dont have enough balance");
+      errMsgHandler("You dont have enough balance");
       return;
     }
     if (!price || price < 0) {
-      setErrMsg("Something wrong with the price");
+      errMsgHandler("Something wrong with the price");
       return;
     }
     if (!symbol) {
-      setErrMsg("Check the symbol");
+      errMsgHandler("Check the symbol");
       return;
     }
 
@@ -86,6 +87,13 @@ const TradeForm = (props) => {
 
   const dropdownChangeHandler = (event) => {
     setOrderType(event.target.value);
+  };
+
+  const errMsgHandler = (text = "Something went wrong") => {
+    setErrMsg(text);
+    setTimeout(() => {
+      setErrMsg("");
+    }, 5000);
   };
 
   return (

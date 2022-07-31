@@ -6,7 +6,7 @@ const Explanation = () => {
   return (
     <div className={classes.middleCard}>
       <u>Start trading!</u>
-      <Search />
+      <Search showNote={true} />
       <br />
       <p className={classes.p}>
         <u>Explanation</u>

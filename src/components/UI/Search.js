@@ -5,7 +5,6 @@ import searchIcon from "../img/search.png";
 import Button from "./Button";
 import stocksArr from "../../store/stocksArr";
 
-// const english = /^[A-Za-z0-9-.]*$/;
 const english = /^[A-Za-z]*$/;
 
 const Search = (props) => {
@@ -31,11 +30,10 @@ const Search = (props) => {
     event.preventDefault();
     setInputError(false);
 
-    console.log(english.test(event.target.value));
     if (!english.test(event.target.value)) {
       setInputError(true);
       if (showModalOnce) {
-        authCtx.toggleError("Valid characters: A-Z/a-z");
+        authCtx.toggleError("Valid symbol characters: A-Z/a-z");
         setShowModalOnce(false);
       }
       return;
@@ -75,6 +73,7 @@ const Search = (props) => {
           minLength={1}
           maxLength={6}
           value={symbol}
+          placeholder="Valid characters: A-Z/a-z"
           onChange={changeHandler}
         />
         <datalist id="stocks" className={classes.autofill}>
@@ -93,12 +92,14 @@ const Search = (props) => {
         >
           <img alt="Search" src={searchIcon} draggable="false" />
         </Button>
+        {/* <br />
+        <p className={classes.note}>Valid symbol characters: A-Z/a-z</p> */}
       </form>
-      {showNote ? (
+      {/* {showNote ? (
         <p className={classes.note}>Valid symbol characters: A-Z/a-z</p>
       ) : (
         ""
-      )}
+      )} */}
     </>
   );
 };

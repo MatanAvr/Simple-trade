@@ -45,7 +45,7 @@ const getFullime = () => {
   const time =
     String(now.getHours()).padStart(2, 0) +
     ":" +
-    String(now.getMinutes()).padStart(2, 0); // + ":" + now.getSeconds()
+    String(now.getMinutes()).padStart(2, 0);
   return `${date} , ${time}`;
 };
 

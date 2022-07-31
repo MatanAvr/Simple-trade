@@ -36,9 +36,13 @@
   display: flex;
   justify-content: space-between;
   margin: 0.5rem auto;
+  min-height: 520px;
 }
 
 @media only screen and (max-width: 600px) {
+  .container {
+    width: 95%;
+  }
   .cards {
     display: block;
   }

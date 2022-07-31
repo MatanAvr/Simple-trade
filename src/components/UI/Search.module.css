@@ -1,16 +1,14 @@
 .searchBar {
   display: flex;
   flex-direction: row;
-  /* border: 1px solid red; */
   justify-content: center;
+  width: 20%;
 }
 
 .searchBar input {
   border-radius: 5px;
+  width: 70%;
 }
-/* .searchBar input:autofill {
-  color: red;
-} */
 
 .searchBar input:focus {
   background-color: rgba(0, 123, 255, 0.25);
@@ -19,14 +17,13 @@
   height: 20px;
 }
 
-.note {
-  font-size: 0.8rem;
-  margin-top: 0px;
-  color: rgba(86, 92, 86, 1);
-}
-
 .error {
   color: red;
-  border-color: red;
+  border-color: rgba(255, 0, 0, 0.8);
   background-color: rgba(128, 0, 0, 0.2);
+}
+@media only screen and (max-width: 600px) {
+  .searchBar {
+    width: 105%;
+  }
 }

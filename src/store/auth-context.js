@@ -58,7 +58,6 @@ export const AuthContextProvider = (props) => {
     try {
       const response = await fetch(url, {
         method: "POST",
-        // mode: "cors",
         headers: {
           "Content-Type": "application/json",
         },
@@ -91,7 +90,6 @@ export const AuthContextProvider = (props) => {
     try {
       await fetch(url, {
         method: "POST",
-        // mode: "cors",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -123,7 +121,6 @@ export const AuthContextProvider = (props) => {
     try {
       const response = await fetch(url, {
         method: "POST",
-        // mode: "cors",
         headers: {
           "Content-Type": "application/json",
         },
@@ -211,7 +208,6 @@ export const AuthContextProvider = (props) => {
     try {
       const response = await fetch(url, {
         method: "PATCH",
-        // mode: "cors",
         body: dataToSendJSON,
         headers: {
           "Content-Type": "application/json",
@@ -236,7 +232,6 @@ export const AuthContextProvider = (props) => {
 
     try {
       const response = await fetch(url, {
-        // mode: "cors",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -271,7 +266,6 @@ export const AuthContextProvider = (props) => {
     try {
       const response = await fetch(url, {
         method: "POST",
-        // mode: "cors",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -301,7 +295,6 @@ export const AuthContextProvider = (props) => {
     token: token,
     isLoggedIn: isLoggedIn,
     email: email,
-    // password: password,
     portfolio: portfolio,
     checkToken: checkTokenHandler,
     login: loginHandler,

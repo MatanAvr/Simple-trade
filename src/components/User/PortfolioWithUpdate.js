@@ -20,7 +20,6 @@ const PortfolioWithUpdate = (props) => {
 
     try {
       const response = await fetch(url, {
-        // mode: "cors",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

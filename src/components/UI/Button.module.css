@@ -66,12 +66,12 @@
 
 @media only screen and (max-width: 600px) {
   .regular {
-    min-height: 35px;
+    min-height: 30px;
     min-width: 45px;
   }
 
   .navActive {
-    min-height: 35px;
+    min-height: 30px;
     min-width: 45px;
   }
 }

@@ -8,7 +8,7 @@
 
 .ul {
   list-style: none;
-  max-height: 400px;
+  max-height: 300px;
   overflow: auto;
   padding-inline-start: unset;
   width: 80%;

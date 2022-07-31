@@ -5,7 +5,6 @@ import searchIcon from "../img/search.png";
 import Button from "./Button";
 import stocksArr from "../../store/stocksArr";
 
-// const english = /^[A-Za-z0-9-.]*$/;
 const english = /^[A-Za-z]*$/;
 
 const Search = (props) => {
@@ -31,7 +30,6 @@ const Search = (props) => {
     event.preventDefault();
     setInputError(false);
 
-    console.log(english.test(event.target.value));
     if (!english.test(event.target.value)) {
       setInputError(true);
       if (showModalOnce) {
@@ -72,6 +70,7 @@ const Search = (props) => {
           name="stocklist"
           list="stocks"
           type="text"
+          placeholder="Valid characters:A-Z/a-z"
           minLength={1}
           maxLength={6}
           value={symbol}

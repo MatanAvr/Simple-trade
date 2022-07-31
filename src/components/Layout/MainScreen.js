@@ -45,7 +45,7 @@ const MainScreen = () => {
         {authCtx.userData ? (
           <>
             {`Welcome ${authCtx.userData.name}! `}
-            {authCtx.trading.status ? <Search /> : ""}
+            <Search />
             {`Available cash: $${authCtx.userData.balance.toFixed(2)}`}
           </>
         ) : (

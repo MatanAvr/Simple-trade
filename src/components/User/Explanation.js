@@ -5,9 +5,9 @@ import Search from "../UI/Search";
 const Explanation = () => {
   return (
     <div className={classes.middleCard}>
-      <u>Start trading!</u>
+      {/* <u>Start trading!</u>
       <Search showNote={true} />
-      <br />
+      <br /> */}
       <p className={classes.p}>
         <u>Explanation</u>
         <br />

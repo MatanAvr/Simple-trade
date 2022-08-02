@@ -29,7 +29,6 @@ const Search = (props) => {
   const changeHandler = (event) => {
     event.preventDefault();
     setInputError(false);
-
     if (!english.test(event.target.value)) {
       setInputError(true);
       if (showModalOnce) {
@@ -39,8 +38,27 @@ const Search = (props) => {
       return;
     }
 
+    // const checkIfClickedAutocomplete = (() => {
+    //   console.log("inside");
+    //   const options = document.getElementById("stocks").childNodes;
+    //   for (let i = 0; i < options.length; i++) {
+    //     if (options[i].value === event.target.value) {
+    //       setTimeout(() => {
+    //         setSymbol("");
+    //       }, 50);
+
+    //       console.log("inside2");
+
+    //       // authCtx.loadTradeScreen(options[i].value);
+
+    //       return;
+    //     }
+    //   }
+    // })();
+
     if (event.type === "submit") {
       authCtx.loadTradeScreen(symbol);
+      setSymbol("");
       return;
     }
 
@@ -76,14 +94,19 @@ const Search = (props) => {
           value={symbol}
           onChange={changeHandler}
         />
-        <datalist id="stocks" className={classes.autofill}>
-          {stocksList ? (
-            stocksList.map((element) => (
-              <option key={Math.random()} value={element} />
-            ))
-          ) : (
-            <option value="EMPTY" />
-          )}
+        <datalist id="stocks">
+          {
+            stocksList
+              ? stocksList.map((element) => (
+                  <option
+                    key={Math.random()}
+                    value={element}
+                    onClick={() => console.log("Clicked")}
+                  />
+                ))
+              : ""
+            // <option value="EMPTY" />
+          }
         </datalist>
 
         <Button

@@ -47,6 +47,7 @@ export const AuthContextProvider = (props) => {
 
   const loginHandler = async (email, pw) => {
     const url = `${BASE_URL}${"/users/login"}`;
+    errorHandler();
 
     const dataToSend = {
       email: email,
@@ -111,6 +112,8 @@ export const AuthContextProvider = (props) => {
   };
 
   const signupHandler = async (email, name, pw) => {
+    errorHandler();
+
     const url = `${BASE_URL}${"/users"}`;
     const dataToSend = {
       username: name,
@@ -192,7 +195,6 @@ export const AuthContextProvider = (props) => {
     if (msg) {
       setErrorMsg(msg);
     }
-
     setError(!current);
   };
 

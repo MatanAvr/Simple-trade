@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import AuthForm from "./components/Auth/AuthForm";
 import AuthContext from "./store/auth-context";
-import MainScreen from "./components/Layout/MainScreen";
+// import MainScreen from "./components/Layout/MainScreen";
+import MainScreenMUI from "./components/Layout/MainScreenMUI";
 
 let init = true;
 
@@ -18,7 +19,7 @@ function App() {
   return (
     <>
       {!authCtx.isLoggedIn && <AuthForm />}
-      {authCtx.isLoggedIn && <MainScreen />}
+      {authCtx.isLoggedIn && <MainScreenMUI />}
     </>
   );
 }

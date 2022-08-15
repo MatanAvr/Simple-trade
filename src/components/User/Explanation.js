@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./Explanation.module.css";
-// import Search from "../UI/Search";
 import { Typography } from "@mui/material";
 
 const Explanation = () => {

@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import classes from "./TradeForm.module.css";
-// import Dropdown from "../UI/Dropdown";
-// import LoadingSpinner from "../UI/LoadingSpinner";
-// import Button from "../UI/Button";
 import Button from "@mui/material/Button";
-// import RefreshIcon from "@mui/icons-material/Refresh";
-// import Fab from "@mui/material/Fab";
-import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Typography from "@mui/material/Typography";
@@ -18,11 +12,6 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import ButtonGroup from "@mui/material/ButtonGroup";
-
-// const dropdownOptions = [
-//   { label: "Buy", value: "buy" },
-//   { label: "Sell", value: "sell" },
-// ];
 
 const TradeForm = (props) => {
   const authCtx = useContext(AuthContext);
@@ -57,7 +46,6 @@ const TradeForm = (props) => {
 
   const quantityChangeHandler = (event) => {
     event.preventDefault();
-    // console.log(event.currentTarget.value);
     let newQuantity = quantity;
     const action = event.currentTarget.value;
 
@@ -149,6 +137,7 @@ const TradeForm = (props) => {
             setQuantity(e.target.value);
           }}
         />
+        <br />
         <ButtonGroup size="small" sx={{ height: "25px", marginTop: "10px" }}>
           <Button
             color="primary"
@@ -180,7 +169,7 @@ const TradeForm = (props) => {
         {errMsg ? <Alert severity="error">{errMsg}</Alert> : ""}
       </Typography>
       <Typography>
-        {!orderSuccess ? ( //!loadingOrder &&
+        {!orderSuccess ? (
           <LoadingButton
             style={{ textTransform: "none" }}
             size="small"

@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import LoadingSpinner from "../UI/LoadingSpinner";
-// import classes from "./PortfolioItemMUI.module.css";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-// import Button from "../UI/Button";
 import { Button, Chip } from "@mui/material";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 

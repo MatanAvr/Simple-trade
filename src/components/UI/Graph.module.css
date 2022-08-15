@@ -11,9 +11,6 @@
   width: auto;
   flex-direction: row;
   justify-content: center;
-  /* border: 1px solid rgba(0, 99, 132, 01); */
-  /* border-radius: 10px; */
-  /* background-color: rgba(0, 99, 132, 0.25); */
 }
 .chart {
   width: 100%;

@@ -54,7 +54,6 @@ const Search = (props) => {
         event?.type === "keydown" ||
         event?.type === "click")
     ) {
-      // console.log("symbol:", symbol);
       authCtx.loadTradeScreen(value);
       setSymbol("");
       setInputValue("");
@@ -75,8 +74,6 @@ const Search = (props) => {
     <>
       <Autocomplete
         size="small"
-        // disablePortal
-        // freeSolo={true}
         id="stocksList"
         options={stocksList}
         sx={{ width: 300 }}

@@ -15,7 +15,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-// import Button from "./Button";
+import { Typography } from "@mui/material";
 
 ChartJS.register(
   CategoryScale,
@@ -119,7 +119,7 @@ const Graph = (props) => {
   ) : props.symbol ? (
     <LoadingSpinner />
   ) : (
-    <h2>Search a stock and start trading!</h2>
+    <Typography>Search a stock and start trading!</Typography>
   );
 };
 

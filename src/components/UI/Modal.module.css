@@ -11,8 +11,8 @@
 .modal {
   position: fixed;
   top: 30vh;
-  left: 5%;
-  /* width: 80%; */
+  left: calc(10%);
+  width: 80%;
   background-color: white;
   padding: 0.5rem;
   border-radius: 14px;

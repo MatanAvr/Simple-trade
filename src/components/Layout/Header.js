@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import classes from "./Header.module.css";
 import logo from "../img/Logo.png";
-// import Button from "../UI/Button";
 import Button from "@mui/material/Button";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Container from "@mui/system/Container";
@@ -59,9 +58,7 @@ const Header = () => {
           onClick={authCtx.loadTradeScreen.bind(null, "back")}
         />
         <div className={classes.headerRight}>
-          {/* <span className={classes.time}>{dateAndTime}</span> */}
           <Typography variant="caption">{dateAndTime}</Typography>
-          {/* <Button type="logout" title="Logout" onClick={authCtx.logout} /> */}
           <Button
             style={{ textTransform: "none" }}
             size="small"

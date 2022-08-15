@@ -1,10 +1,7 @@
 import React, { useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import classes from "./Portfolio.module.css";
-// import LoadingSpinner from "../UI/LoadingSpinner";
-// import PortfolioItem from "./PortfolioItem";
 import PortfolioItemMUI from "./PortfolioItemMUI";
-// import Button from "../UI/Button";
 import { Button, Typography } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -29,7 +26,9 @@ const Portfolio = (props) => {
             You'r portfolio is empty, look for a stock and start trading!
           </Typography>
           <Button
-            title="Start Trading"
+            variant="outlined"
+            style={{ textTransform: "none" }}
+            size="small"
             onClick={authCtx.loadTradeScreen.bind(null, "")}
           >
             Start Trading

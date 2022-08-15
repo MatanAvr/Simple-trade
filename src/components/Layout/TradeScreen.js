@@ -2,11 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./TradeScreen.module.css";
-// import Button from "../UI/Button";
 import Button from "@mui/material/Button";
 import TradeForm from "./TradeForm";
-// import IconButton from "@mui/material/IconButton";
-// import RefreshIcon from "../../components/img/refresh.png";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import Graph from "../UI/Graph";
 import Typography from "@mui/material/Typography";
@@ -78,12 +75,6 @@ const TradeScreen = (props) => {
             <Typography>{`Current price: $${price}`}</Typography>
           )}
           <Button onClick={getQuote} variant="outlined" size="small">
-            {/* <img
-              alt="Refresh"
-              src={RefreshIcon}
-              height="15px"
-              draggable="false"
-            /> */}
             <RefreshIcon />
           </Button>
         </div>

@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import classes from "./MainScreen.module.css";
 import Header from "./Header";
-// import Portfolio from "../User/Portfolio";
 import PortfolioMUI from "../User/PortfolioMUI";
 import Explanation from "../User/Explanation";
 import Footer from "./Footer";
@@ -11,7 +10,6 @@ import TradeScreen from "./TradeScreen";
 import Leaderboard from "../User/Leaderboard";
 import Search from "../UI/Search";
 import Modal from "../UI/Modal";
-// import Button from "../UI/Button";
 import { Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
@@ -72,7 +70,6 @@ const MainScreen = () => {
         ) : (
           <>
             <div className={classes.portfoliocard}>
-              {/* <Portfolio /> */}
               <PortfolioMUI />
             </div>
             <div className={classes.card}>

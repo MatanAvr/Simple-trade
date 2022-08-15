@@ -52,7 +52,7 @@ export default function AuthForm() {
   const errorWhilelogin = authCtx.error;
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredFirstName, setEnteredFirstName] = useState("");
-  const [enteredLastName, setEnteredLastName] = useState("");
+  // const [enteredLastName, setEnteredLastName] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [signinForm, setSigninForm] = useState(true);
   const [trytoLogin, setTryToLogin] = useState(false);
@@ -158,7 +158,7 @@ export default function AuthForm() {
                         }}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    {/* <Grid item xs={12} sm={6}>
                       <TextField
                         required
                         fullWidth
@@ -171,7 +171,7 @@ export default function AuthForm() {
                           setEnteredLastName(e.target.value);
                         }}
                       />
-                    </Grid>
+                    </Grid> */}
                   </>
                 )}
                 <Grid item xs={12}>

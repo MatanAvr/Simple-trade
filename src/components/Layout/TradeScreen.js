@@ -5,7 +5,7 @@ import classes from "./TradeScreen.module.css";
 // import Button from "../UI/Button";
 import Button from "@mui/material/Button";
 import TradeForm from "./TradeForm";
-import IconButton from "@mui/material/IconButton";
+// import IconButton from "@mui/material/IconButton";
 // import RefreshIcon from "../../components/img/refresh.png";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import Graph from "../UI/Graph";
@@ -43,11 +43,11 @@ const TradeScreen = (props) => {
         authCtx.toggleError(data.error);
         return;
       }
-
       setPrice(data.currentPrice);
-
       setLoading(false);
-    } catch (err) {}
+    } catch (err) {
+      authCtx.toggleError(err);
+    }
   };
 
   useEffect(() => {

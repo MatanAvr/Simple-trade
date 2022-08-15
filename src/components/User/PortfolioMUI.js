@@ -31,22 +31,42 @@ const Portfolio = (props) => {
           <Button
             title="Start Trading"
             onClick={authCtx.loadTradeScreen.bind(null, "")}
-          />
+          >
+            Start Trading
+          </Button>
         </>
       ) : (
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 200 }} size="small">
             <TableHead>
-              <TableRow key="portfolioTableHead">
-                <TableCell>Symbol</TableCell>
-                <TableCell align="center">Quantity</TableCell>
-                <TableCell align="center">Average buy price</TableCell>
-                <TableCell align="center">P/L</TableCell>
+              <TableRow
+                key="portfolioTableHead"
+                style={{ backgroundColor: "rgba(25,118,210,0.8)" }}
+              >
+                <TableCell>
+                  <b>Symbol</b>
+                </TableCell>
+                <TableCell align="center">
+                  <b>Quantity</b>
+                </TableCell>
+                <TableCell align="center">
+                  <b>Average buy price</b>
+                </TableCell>
+                <TableCell align="center" sx={{ minWidth: "95px" }}>
+                  <b>P/L</b>
+                </TableCell>
+                <TableCell align="center">
+                  <b>Trade</b>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {portfolioList.map((item) => (
-                <PortfolioItemMUI item={item} />
+              {portfolioList.map((item, index) => (
+                <PortfolioItemMUI
+                  key={Math.random()}
+                  item={item}
+                  index={index}
+                />
               ))}
             </TableBody>
           </Table>

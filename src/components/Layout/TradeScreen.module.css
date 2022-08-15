@@ -22,7 +22,7 @@
   flex-direction: row;
   margin: 1rem 2px;
   justify-content: space-between;
-  min-height: 500px;
+  min-height: 400px;
 }
 
 .card1 {
@@ -45,7 +45,7 @@
   min-height: 100px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 0.5rem;
-  padding: 2%;
+  padding: 1rem;
 }
 .card3 {
   display: flex;

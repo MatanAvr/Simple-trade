@@ -39,7 +39,7 @@ const MainScreen = () => {
             <br /> Please try again :) <br />
           </Typography>
           <Button
-            style={{ textTransform: "none" }}
+            style={{ textTransform: "none", marginTop: "20px" }}
             size="small"
             variant="outlined"
             onClick={modalHandler}
@@ -54,9 +54,7 @@ const MainScreen = () => {
       <div className={classes.upperCard}>
         {authCtx.userData ? (
           <>
-            <Typography variant="h6">
-              Welcome {authCtx.userData.name}!
-            </Typography>
+            <Typography>Welcome {authCtx.userData.name}!</Typography>
 
             <Search />
 
@@ -73,7 +71,7 @@ const MainScreen = () => {
           <TradeScreen />
         ) : (
           <>
-            <div className={classes.card}>
+            <div className={classes.portfoliocard}>
               {/* <Portfolio /> */}
               <PortfolioMUI />
             </div>

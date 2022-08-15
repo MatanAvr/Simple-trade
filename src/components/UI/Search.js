@@ -17,8 +17,9 @@ const Search = (props) => {
   const [stocksList, setStocksList] = useState([]);
   const [showModalOnce, setShowModalOnce] = useState(true);
   const [inputError, setInputError] = useState(false);
+  const [inputValue, setInputValue] = useState("");
   // const showNote = props.showNote ? true : false;
-  useEffect(() => {});
+  // useEffect(() => {});
 
   const updateStockList = (stockName) => {
     const rawList = stocksArr.filter(
@@ -53,8 +54,10 @@ const Search = (props) => {
         event?.type === "keydown" ||
         event?.type === "click")
     ) {
-      authCtx.loadTradeScreen(symbol);
+      // console.log("symbol:", symbol);
+      authCtx.loadTradeScreen(value);
       setSymbol("");
+      setInputValue("");
       setStocksList([]);
       return;
     }
@@ -72,66 +75,29 @@ const Search = (props) => {
     <>
       <Autocomplete
         size="small"
-        disablePortal
+        // disablePortal
+        // freeSolo={true}
         id="stocksList"
         options={stocksList}
         sx={{ width: 300 }}
         value={symbol}
+        inputValue={inputValue}
+        autoComplete={true}
         autoSelect={true}
-        isOptionEqualToValue={(option, value) =>
-          option.toUpperCase() === value.toUpperCase()
-        }
-        // onChange={(event, value) => {
-        //   changeHandler(event, value);
-        // }}
-        onInputChange={(event, value) => {
+        isOptionEqualToValue={(option, value) => option === value}
+        onChange={(event, value) => {
           changeHandler(event, value);
+        }}
+        onInputChange={(event, value) => {
+          setInputValue(value.toUpperCase());
+          updateStockList(value.toUpperCase());
         }}
         renderInput={(stocksList) => (
           <TextField size="small" {...stocksList} label="Search for a stock" />
         )}
       />
-      {/* <form
-        className={classes.searchBar}
-        onSubmit={changeHandler}
-        autoComplete="off"
-      >
-        <input
-          className={inputError ? classes.error : ""}
-          name="stocklist"
-          list="stocks"
-          type="text"
-          placeholder="Valid characters:A-Z/a-z"
-          minLength={1}
-          maxLength={6}
-          value={symbol}
-          onChange={changeHandler}
-        />
-        <datalist id="stocks">
-          {stocksList
-            ? stocksList.map((element) => (
-                <option
-                  key={Math.random()}
-                  value={element}
-                  onClick={() => console.log("Clicked")}
-                />
-              ))
-            : ""}
-        </datalist>
-        <IconButton
-          // type="icon"
-          color="primary"
-          onClick={authCtx.loadTradeScreen.bind(null, symbol)}
-        >
-          <SearchIcon />
-        </IconButton>
-      </form> */}
     </>
   );
 };
 
 export default Search;
-
-{
-  /* <img alt="Search" src={searchIcon} draggable="false" /> */
-}

@@ -18,9 +18,12 @@ const Leaderboard = () => {
       {leaderboardList.length === 0 ? (
         <LoadingSpinner />
       ) : (
-        <LeaderboardItem leaderboardData={leaderboardList} />
+        <LeaderboardItem
+          key={Math.random()}
+          leaderboardData={leaderboardList}
+        />
       )}
-      <Typography variant="section">
+      <Typography variant="caption">
         <br />
         {`Yor are in ${
           leaderboardList.findIndex(

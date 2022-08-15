@@ -5,7 +5,8 @@ import LoadingSpinner from "../UI/LoadingSpinner";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 // import Button from "../UI/Button";
-import { Chip } from "@mui/material";
+import { Button, Chip } from "@mui/material";
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 
 const BASE_URL = "https://simple-trade-israel-dev.herokuapp.com";
 
@@ -51,13 +52,13 @@ const PortfolioItemMUI = (props) => {
   useEffect(() => {
     getCurrentPrice(currentSymbol);
   }, []);
-
+  const backgroundColor = props.index % 2 === 0 ? "rgba(25,118,210,0.2)" : "";
   return (
-    <TableRow key={props.item._id}>
+    <TableRow key={props.item._id} style={{ backgroundColor: backgroundColor }}>
       <TableCell align="center">{props.item.symbol}</TableCell>
       <TableCell align="center">{props.item.quantity}</TableCell>
       <TableCell align="center">{props.item.price.toFixed(2)}$</TableCell>
-      <TableCell align="center">
+      <TableCell align="right">
         {loading ? (
           <LoadingSpinner size="small" />
         ) : (
@@ -69,6 +70,14 @@ const PortfolioItemMUI = (props) => {
             }
           />
         )}
+      </TableCell>
+      <TableCell align="center">
+        <Button
+          size="small"
+          onClick={authCtx.loadTradeScreen.bind(null, props.item.symbol)}
+        >
+          <DoubleArrowIcon size="small" />
+        </Button>
       </TableCell>
     </TableRow>
   );

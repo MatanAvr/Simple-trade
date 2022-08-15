@@ -2,10 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./TradeScreen.module.css";
-import Button from "../UI/Button";
+// import Button from "../UI/Button";
+import Button from "@mui/material/Button";
 import TradeForm from "./TradeForm";
-import refreshIcon from "../../components/img/refresh.png";
+import IconButton from "@mui/material/IconButton";
+// import RefreshIcon from "../../components/img/refresh.png";
+import RefreshIcon from "@mui/icons-material/Refresh";
 import Graph from "../UI/Graph";
+import Typography from "@mui/material/Typography";
 
 const BASE_URL = "https://simple-trade-israel-dev.herokuapp.com";
 
@@ -53,24 +57,34 @@ const TradeScreen = (props) => {
   return (
     <div className={classes.tradeScreen}>
       <Button
-        title="Go back"
+        style={{ textTransform: "none" }}
+        size="small"
+        variant="outlined"
         onClick={authCtx.loadTradeScreen.bind(null, "back")}
-      />
+      >
+        Go back
+      </Button>
       <div className={classes.cards}>
         <div className={classes.card1}>
           <Graph symbol={currentSymbol} />
         </div>
 
         <div className={classes.card2}>
-          <h2>{`Trade ${currentSymbol}`}</h2>
-          {loading ? <LoadingSpinner /> : <p>{`Current price: $${price}`}</p>}
-          <Button onClick={getQuote}>
-            <img
+          <Typography variant="h5">{`Trade ${currentSymbol}`}</Typography>
+
+          {loading ? (
+            <LoadingSpinner />
+          ) : (
+            <Typography>{`Current price: $${price}`}</Typography>
+          )}
+          <Button onClick={getQuote} variant="outlined" size="small">
+            {/* <img
               alt="Refresh"
-              src={refreshIcon}
+              src={RefreshIcon}
               height="15px"
               draggable="false"
-            />
+            /> */}
+            <RefreshIcon />
           </Button>
         </div>
 

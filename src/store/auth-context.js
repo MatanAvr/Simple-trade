@@ -195,7 +195,7 @@ export const AuthContextProvider = (props) => {
     if (msg) {
       setErrorMsg(msg);
     }
-    setError(!current);
+    // setError(!current);
   };
 
   const orderHandler = async (type, symbol, quantity, price) => {

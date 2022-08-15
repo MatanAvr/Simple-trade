@@ -3,6 +3,7 @@ import AuthContext from "../../store/auth-context";
 import classes from "./Leaderboard.module.css";
 import LeaderboardItem from "./LeaderboardItem";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import { Typography } from "@mui/material";
 
 const Leaderboard = () => {
   const authCtx = useContext(AuthContext);
@@ -10,15 +11,17 @@ const Leaderboard = () => {
 
   return (
     <div className={classes.leaderboard}>
-      <p>
+      <Typography variant="h6">
         <u>Leaderboard</u>
-      </p>
+        <br />
+      </Typography>
       {leaderboardList.length === 0 ? (
         <LoadingSpinner />
       ) : (
         <LeaderboardItem leaderboardData={leaderboardList} />
       )}
-      <p className={classes.updateText}>
+      <Typography variant="section">
+        <br />
         {`Yor are in ${
           leaderboardList.findIndex(
             (item) => item.username === authCtx.userData.name
@@ -29,7 +32,7 @@ const Leaderboard = () => {
         (P/L is calculated from the initial 10k$ balance)
         <br />
         Last update: {getFullime()}
-      </p>
+      </Typography>
     </div>
   );
 };

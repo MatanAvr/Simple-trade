@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../../store/auth-context";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
 import LoadingSpinner from "./LoadingSpinner";
 import classes from "./Graph.module.css";
 import { Line } from "react-chartjs-2";
@@ -13,7 +15,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import Button from "./Button";
+// import Button from "./Button";
 
 ChartJS.register(
   CategoryScale,
@@ -39,8 +41,8 @@ let dataSet = {
     {
       label: "Stock price",
       data: [],
-      backgroundColor: "rgb(0, 99, 132)",
-      borderColor: "rgb(0, 99, 132)",
+      backgroundColor: "rgb(25,118,210)",
+      borderColor: "rgb(25,118,210)",
     },
   ],
 };
@@ -71,26 +73,44 @@ const Graph = (props) => {
   return graphLoaded ? (
     <div className={classes.graphContainer}>
       <div className={classes.graphUI}>
-        <Button
-          type={currentRange === "MONTHLY" ? "navActive" : ""}
-          title="Monthly"
-          onClick={grpahRangeHandler.bind(null, "MONTHLY")}
-        />
-        <Button
-          type={currentRange === "WEEKLY" ? "navActive" : ""}
-          title="Weekly"
-          onClick={grpahRangeHandler.bind(null, "WEEKLY")}
-        />
-        <Button
-          type={currentRange === "DAILY" ? "navActive" : ""}
-          title="Day"
-          onClick={grpahRangeHandler.bind(null, "DAILY")}
-        />
-        <Button
-          type={currentRange === "INTRADAY" ? "navActive" : ""}
-          title="Interday"
-          onClick={grpahRangeHandler.bind(null, "INTRADAY")}
-        />
+        <ButtonGroup variant="outlined">
+          <Button
+            style={{ textTransform: "none" }}
+            size="small"
+            variant={currentRange === "MONTHLY" ? "contained" : "outlined"}
+            title="Monthly"
+            onClick={grpahRangeHandler.bind(null, "MONTHLY")}
+          >
+            Monthly
+          </Button>
+          <Button
+            style={{ textTransform: "none" }}
+            size="small"
+            variant={currentRange === "WEEKLY" ? "contained" : "outlined"}
+            title="Weekly"
+            onClick={grpahRangeHandler.bind(null, "WEEKLY")}
+          >
+            Weekly
+          </Button>
+          <Button
+            style={{ textTransform: "none" }}
+            size="small"
+            variant={currentRange === "DAILY" ? "contained" : "outlined"}
+            title="Day"
+            onClick={grpahRangeHandler.bind(null, "DAILY")}
+          >
+            Day
+          </Button>
+          <Button
+            style={{ textTransform: "none" }}
+            size="small"
+            variant={currentRange === "INTRADAY" ? "contained" : "outlined"}
+            title="Interday"
+            onClick={grpahRangeHandler.bind(null, "INTRADAY")}
+          >
+            Interday
+          </Button>
+        </ButtonGroup>
       </div>
       <div className={classes.chart}>
         <Line data={dataSet} options={options} />

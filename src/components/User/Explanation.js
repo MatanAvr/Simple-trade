@@ -1,15 +1,15 @@
 import React from "react";
 import classes from "./Explanation.module.css";
-import Search from "../UI/Search";
+// import Search from "../UI/Search";
+import { Typography } from "@mui/material";
 
 const Explanation = () => {
   return (
     <div className={classes.middleCard}>
-      {/* <u>Start trading!</u>
-      <Search showNote={true} />
-      <br /> */}
-      <p className={classes.p}>
+      <Typography variant="h6">
         <u>Explanation</u>
+      </Typography>
+      <Typography sx={{ mx: "auto", width: "85%" }}>
         <br />
         Simple-trade is an educational simplified trading platform, which allows
         you to simulate basic stock trading. You start with 10k$, try to be the
@@ -26,8 +26,8 @@ const Explanation = () => {
         <br />
         Use the search bar to look for (autocompleted) real stocks and start
         trading!
-      </p>
-      <br />
+        <br />
+      </Typography>
     </div>
   );
 };

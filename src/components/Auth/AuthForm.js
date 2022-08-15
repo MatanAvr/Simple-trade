@@ -56,13 +56,13 @@ export default function AuthForm() {
   const [enteredPassword, setEnteredPassword] = useState("");
   const [signinForm, setSigninForm] = useState(true);
   const [trytoLogin, setTryToLogin] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const [errMsg, setErrMsg] = useState("");
 
   const submitHandler = async (event) => {
     event.preventDefault();
     setTryToLogin(true);
-    const data = new FormData(event.currentTarget);
+    // const data = new FormData(event.currentTarget);
     setErrMsg("");
     if (
       enteredEmail.trim().length === 0 ||
@@ -92,18 +92,18 @@ export default function AuthForm() {
     }
   };
 
-  const signinToggleHanlder = () => {
-    setSigninForm((prevState) => {
-      setSigninForm(!prevState);
-    });
-  };
+  // const signinToggleHanlder = () => {
+  //   setSigninForm((prevState) => {
+  //     setSigninForm(!prevState);
+  //   });
+  // };
 
-  const modalHandler = () => {
-    authCtx.toggleError();
-    authCtx.errorMsg = "";
-    setShowModal(false);
-    setTryToLogin(false);
-  };
+  // const modalHandler = () => {
+  //   authCtx.toggleError();
+  //   authCtx.errorMsg = "";
+  //   // setShowModal(false);
+  //   setTryToLogin(false);
+  // };
 
   useEffect(() => {
     if (errorWhilelogin) {
@@ -127,7 +127,7 @@ export default function AuthForm() {
               alignItems: "center",
             }}
           >
-            <img src={logo} loading="lazy" width="60%" />
+            <img src={logo} loading="lazy" width="60%" alt="logo" />
 
             <Typography component="h1" variant="h5">
               {signinForm ? "Sign in" : "Sign up"}
@@ -253,7 +253,7 @@ export default function AuthForm() {
                   >
                     {signinForm
                       ? "Don't have an account? Sign Up"
-                      : "Already have an account? Sign in"}{" "}
+                      : "Already have an account? Sign in"}
                   </Link>
                 </Grid>
               </Grid>

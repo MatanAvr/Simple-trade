@@ -17,9 +17,7 @@ const Portfolio = (props) => {
 
   return (
     <div className={classes.portfolio}>
-      <Typography variant="h6">
-        <u>Portfolio</u>
-      </Typography>
+      <Typography variant="h6">Portfolio</Typography>
       {portfolioList.length === 0 ? (
         <>
           <Typography>

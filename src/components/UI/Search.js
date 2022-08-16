@@ -76,7 +76,7 @@ const Search = (props) => {
         size="small"
         id="stocksList"
         options={stocksList}
-        sx={{ width: 300 }}
+        sx={{ width: 250 }}
         value={symbol}
         inputValue={inputValue}
         autoComplete={true}

@@ -143,9 +143,8 @@ export default function AuthForm() {
                   ""
                 ) : (
                   <>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12}>
                       <TextField
-                        // autoComplete="given-name"
                         name="firstName"
                         value={enteredFirstName}
                         required
@@ -158,20 +157,6 @@ export default function AuthForm() {
                         }}
                       />
                     </Grid>
-                    {/* <Grid item xs={12} sm={6}>
-                      <TextField
-                        required
-                        fullWidth
-                        id="lastName"
-                        value={enteredLastName}
-                        label="Last Name"
-                        name="lastName"
-                        // autoComplete="family-name"
-                        onChange={(e) => {
-                          setEnteredLastName(e.target.value);
-                        }}
-                      />
-                    </Grid> */}
                   </>
                 )}
                 <Grid item xs={12}>

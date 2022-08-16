@@ -5,11 +5,8 @@ import { Typography } from "@mui/material";
 const Explanation = () => {
   return (
     <div className={classes.middleCard}>
-      <Typography variant="h6">
-        <u>Explanation</u>
-      </Typography>
+      <Typography variant="h6">Explanation</Typography>
       <Typography sx={{ mx: "auto", width: "85%" }}>
-        <br />
         Simple-trade is an educational simplified trading platform, which allows
         you to simulate basic stock trading. You start with 10k$, try to be the
         most profitable trader!

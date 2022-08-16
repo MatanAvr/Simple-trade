@@ -12,7 +12,7 @@ const Leaderboard = () => {
   return (
     <div className={classes.leaderboard}>
       <Typography variant="h6">
-        <u>Leaderboard</u>
+        Leaderboard
         <br />
       </Typography>
       {leaderboardList.length === 0 ? (

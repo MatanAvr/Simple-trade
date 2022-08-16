@@ -21,8 +21,10 @@ const Portfolio = (props) => {
       {portfolioList.length === 0 ? (
         <>
           <Typography>
-            You'r portfolio is empty, look for a stock and start trading!
+            Your portfolio is currently empty, look for a stock and start
+            trading!
           </Typography>
+          <br />
           <Button
             variant="outlined"
             style={{ textTransform: "none" }}

@@ -29,3 +29,9 @@
   width: 95%;
   color: green;
 }
+
+@media only screen and (max-width: 600px) {
+  .orderForm {
+    height: 300px;
+  }
+}

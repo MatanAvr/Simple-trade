@@ -18,6 +18,9 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .graphContainer {
+    padding: 0.5rem 0.5rem;
+  }
   .graphUI {
     width: 90%;
   }

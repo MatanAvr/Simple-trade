@@ -1,7 +1,7 @@
 # Simple-trade
 A simplified trading platform, which allows you to simulate basic stock trading - 
 <a href="https://simpletrade-c8774.firebaseapp.com/" target="_blank">link</a>.<br/>
-Using JavaScript, React, NodeJS, MongoDB, RestAPI.
+Using JavaScript, React, NodeJS, MongoDB, RestAPI, HTML, CSS.
 
 <h3>Update 16.8.22: - New Material-UI design</h3>
 

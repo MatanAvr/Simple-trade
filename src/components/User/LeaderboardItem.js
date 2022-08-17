@@ -1,16 +1,12 @@
 import React, { useContext } from "react";
-// import classes from "./LeaderboardItem.module.css";
 import AuthContext from "../../store/auth-context";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-// import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Chip from "@mui/material/Chip";
-// import Avatar from "@mui/material/Avatar";
-// import { yellow } from "@mui/material/colors";
 
 const LeaderboardItem = (props) => {
   const authCtx = useContext(AuthContext);
@@ -32,7 +28,6 @@ const LeaderboardItem = (props) => {
                 : item.username === authCtx.userData.name
                 ? "rgba(0,0,255,0.5)" //blue
                 : "";
-            //if current user => border is more visible
             const usernameShow =
               item.username === authCtx.userData.name ? (
                 <b>{item.username}</b>

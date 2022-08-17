@@ -64,7 +64,6 @@ const TradeForm = (props) => {
     setErrMsg("");
 
     if (quantity < 1 || quantity % 1 !== 0) {
-      console.log(quantity & 1);
       errMsgHandler("Quantity must be a whole number greater than 0");
       return;
     }
@@ -164,11 +163,11 @@ const TradeForm = (props) => {
           )}
         </ButtonGroup>
       </Typography>
-      <Typography>
+      <Typography component="span">
         Order value: ${orderValue}
         {errMsg ? <Alert severity="error">{errMsg}</Alert> : ""}
       </Typography>
-      <Typography>
+      <Typography component="span">
         {!orderSuccess ? (
           <LoadingButton
             style={{ textTransform: "none" }}

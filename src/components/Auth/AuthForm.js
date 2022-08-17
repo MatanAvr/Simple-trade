@@ -1,33 +1,19 @@
 import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../../store/auth-context";
-// import classes from "./AuthForm.module.css";
 import logo from "../img/Logo.png";
-// import LoadingSpinner from "../UI/LoadingSpinner";
-// import Button from "../UI/Button";
-// import Modal from "../UI/Modal";
-// import SignIn from "./SignIn";
-/********************************************** */
-// import * as React from "react";
-// import Avatar from "@mui/material/Avatar";
-// import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
-// import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-// import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SendIcon from "@mui/icons-material/Send";
-// import { red } from "@mui/material/colors";
-// import Card from "@mui/material/Card";
 import Paper from "@mui/material/Paper";
 import { Switch, Alert } from "@mui/material";
-/********************************************** */
 function Copyright(props) {
   return (
     <Typography
@@ -37,9 +23,6 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © Simple trade "}
-      {/* <Link color="inherit" href="https://simpletrade-c8774.firebaseapp.com/"> */}
-
-      {/* </Link> */}
       {new Date().getFullYear()}
     </Typography>
   );
@@ -52,17 +35,14 @@ export default function AuthForm() {
   const errorWhilelogin = authCtx.error;
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredFirstName, setEnteredFirstName] = useState("");
-  // const [enteredLastName, setEnteredLastName] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [signinForm, setSigninForm] = useState(true);
   const [trytoLogin, setTryToLogin] = useState(false);
-  // const [showModal, setShowModal] = useState(false);
   const [errMsg, setErrMsg] = useState("");
 
   const submitHandler = async (event) => {
     event.preventDefault();
     setTryToLogin(true);
-    // const data = new FormData(event.currentTarget);
     setErrMsg("");
     if (
       enteredEmail.trim().length === 0 ||
@@ -92,19 +72,6 @@ export default function AuthForm() {
     }
   };
 
-  // const signinToggleHanlder = () => {
-  //   setSigninForm((prevState) => {
-  //     setSigninForm(!prevState);
-  //   });
-  // };
-
-  // const modalHandler = () => {
-  //   authCtx.toggleError();
-  //   authCtx.errorMsg = "";
-  //   // setShowModal(false);
-  //   setTryToLogin(false);
-  // };
-
   useEffect(() => {
     if (errorWhilelogin) {
       setErrMsg(authCtx.errorMsg);
@@ -132,12 +99,7 @@ export default function AuthForm() {
             <Typography component="h1" variant="h5">
               {signinForm ? "Sign in" : "Sign up"}
             </Typography>
-            <Box
-              component="form"
-              // noValidate
-              onSubmit={submitHandler}
-              sx={{ mt: 3 }}
-            >
+            <Box component="form" onSubmit={submitHandler} sx={{ mt: 3 }}>
               <Grid container spacing={2}>
                 {signinForm ? (
                   ""
@@ -187,7 +149,6 @@ export default function AuthForm() {
                     onChange={(e) => {
                       setEnteredPassword(e.target.value);
                     }}
-                    // autoComplete="new-password"
                   />
                 </Grid>
                 {signinForm ? (
@@ -207,9 +168,9 @@ export default function AuthForm() {
                   ""
                 )}
               </Grid>
-              {errMsg ? ( // || authCtx.errorMsg
+              {errMsg ? (
                 <Alert severity="error" sx={{ marginTop: 2 }}>
-                  {errMsg}!{/* || authCtx.errorMsg */}
+                  {errMsg}!
                 </Alert>
               ) : (
                 ""
@@ -217,7 +178,6 @@ export default function AuthForm() {
               <LoadingButton
                 type="submit"
                 sx={{ mt: 3, mb: 2 }}
-                // onClick={handleClick}
                 fullWidth
                 endIcon={<SendIcon />}
                 loading={trytoLogin}

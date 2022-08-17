@@ -185,7 +185,6 @@ export const AuthContextProvider = (props) => {
   };
 
   const errorHandler = (msg = null) => {
-    // console.log(msg);
     if (msg === "clear") {
       setErrorMsg("");
       setError(false);

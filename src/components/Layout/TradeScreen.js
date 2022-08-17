@@ -54,7 +54,7 @@ const TradeScreen = (props) => {
   return (
     <div className={classes.tradeScreen}>
       <Button
-        style={{ textTransform: "none", width: "90%", alignSelf: "center" }}
+        style={{ textTransform: "none", width: "100%", alignSelf: "center" }}
         size="small"
         variant="outlined"
         onClick={authCtx.loadTradeScreen.bind(null, "back")}

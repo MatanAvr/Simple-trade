@@ -1,7 +1,7 @@
 .regular {
   margin: 0.25rem 0.25rem;
   min-width: 25px;
-  color: rgba(0, 99, 132); /* (0, 123, 255) */
+  color: rgba(0, 99, 132);
   padding: 4px 4px;
   height: 25px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -19,12 +19,7 @@
   border: 1px solid black;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
   size: 18px;
-  background-color: rgba(
-    0,
-    99,
-    132,
-    0.6
-  ); /* rgb(0, 99, 132)   (0, 123, 255, 0.8)*/
+  background-color: rgba(0, 99, 132, 0.6);
   color: black;
 }
 
@@ -49,7 +44,6 @@
 .icon {
   margin: 0 5px;
   min-height: 30px;
-  /* color: rgba(0, 123, 255); */
   padding: 4px 4px;
   height: 25px;
   background-color: rgba(255, 255, 255, 0.8);

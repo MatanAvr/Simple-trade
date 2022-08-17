@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import classes from "./MainScreen.module.css";
 import Header from "./Header";
-import Portfolio from "../User/Portfolio";
+import PortfolioMUI from "../User/PortfolioMUI";
 import Explanation from "../User/Explanation";
 import Footer from "./Footer";
 import AuthContext from "../../store/auth-context";
@@ -10,7 +10,8 @@ import TradeScreen from "./TradeScreen";
 import Leaderboard from "../User/Leaderboard";
 import Search from "../UI/Search";
 import Modal from "../UI/Modal";
-import Button from "../UI/Button";
+import { Button } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 const MainScreen = () => {
   const authCtx = useContext(AuthContext);
@@ -31,11 +32,18 @@ const MainScreen = () => {
     <div className={classes.container}>
       {showModal || authCtx.error ? (
         <Modal onClose={modalHandler}>
-          <p>
+          <Typography>
             {authCtx.errorMsg ? authCtx.errorMsg : "Something went wrong"}
-            <br /> Please try again :)
-          </p>
-          <Button title="Close" onClick={modalHandler} />
+            <br /> Please try again :) <br />
+          </Typography>
+          <Button
+            style={{ textTransform: "none", marginTop: "20px" }}
+            size="small"
+            variant="outlined"
+            onClick={modalHandler}
+          >
+            Confirm
+          </Button>
         </Modal>
       ) : (
         ""
@@ -44,10 +52,13 @@ const MainScreen = () => {
       <div className={classes.upperCard}>
         {authCtx.userData ? (
           <>
-            {`Welcome ${authCtx.userData.name}! `}
-            {/* {authCtx.trading.status ? <Search /> : ""} */}
+            <Typography>Welcome {authCtx.userData.name}!</Typography>
+
             <Search />
-            {`Available cash: $${authCtx.userData.balance.toFixed(2)}`}
+
+            <Typography>
+              Available cash: {authCtx.userData.balance.toFixed(2)}$
+            </Typography>
           </>
         ) : (
           <LoadingSpinner />
@@ -58,8 +69,8 @@ const MainScreen = () => {
           <TradeScreen />
         ) : (
           <>
-            <div className={classes.card}>
-              <Portfolio />
+            <div className={classes.portfoliocard}>
+              <PortfolioMUI />
             </div>
             <div className={classes.card}>
               <Explanation />

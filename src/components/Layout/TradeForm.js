@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import classes from "./TradeForm.module.css";
-import Dropdown from "../UI/Dropdown";
-import LoadingSpinner from "../UI/LoadingSpinner";
-import Button from "../UI/Button";
-
-const dropdownOptions = [
-  { label: "Buy", value: "buy" },
-  { label: "Sell", value: "sell" },
-];
+import Button from "@mui/material/Button";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import Typography from "@mui/material/Typography";
+import Alert from "@mui/material/Alert";
+import LoadingButton from "@mui/lab/LoadingButton";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import ButtonGroup from "@mui/material/ButtonGroup";
 
 const TradeForm = (props) => {
   const authCtx = useContext(AuthContext);
@@ -44,7 +47,7 @@ const TradeForm = (props) => {
   const quantityChangeHandler = (event) => {
     event.preventDefault();
     let newQuantity = quantity;
-    const action = event.target.value;
+    const action = event.currentTarget.value;
 
     if (isNaN(newQuantity)) alert("Plase enter a number");
     else if (action === "+") newQuantity++;
@@ -98,18 +101,30 @@ const TradeForm = (props) => {
 
   return (
     <form onSubmit={submitHandler} className={classes.orderForm}>
-      {`You currently have ${maxQuantity} ${symbol} stocks`}
-      <br />
-      {`Average buy price: $${averageBuyPrice(currentPortfolio, symbol).toFixed(
-        2
-      )}`}
-      <Dropdown
-        label="Order Type:"
-        options={dropdownOptions}
-        value={orderType}
-        onChange={dropdownChangeHandler}
-      />
-      <label>
+      <Typography>
+        {`You currently have ${maxQuantity} ${symbol} stocks`}
+        <br />
+        {`Average buy price: $${averageBuyPrice(
+          currentPortfolio,
+          symbol
+        ).toFixed(2)}`}
+      </Typography>
+
+      <Typography component={"span"}>
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel>Order type</InputLabel>
+          <Select
+            value={orderType}
+            label="orderType"
+            onChange={dropdownChangeHandler}
+          >
+            <MenuItem value={"buy"}>Buy</MenuItem>
+            <MenuItem value={"sell"}>Sell</MenuItem>
+          </Select>
+        </FormControl>
+      </Typography>
+
+      <Typography component="span">
         Order quantity:{" "}
         <input
           name="orderQuantity"
@@ -122,25 +137,52 @@ const TradeForm = (props) => {
             setQuantity(e.target.value);
           }}
         />
-      </label>
-      <div className={classes.cards}>
-        <Button title=" - " value="-" onClick={quantityChangeHandler} />
-        <Button title=" + " value="+" onClick={quantityChangeHandler} />
-        {orderType === "sell" ? (
-          <Button title="Max" value="Max" onClick={quantityChangeHandler} />
+        <br />
+        <ButtonGroup size="small" sx={{ height: "25px", marginTop: "10px" }}>
+          <Button
+            color="primary"
+            size="small"
+            value="-"
+            onClick={quantityChangeHandler}
+          >
+            <RemoveIcon />
+          </Button>
+          <Button
+            color="primary"
+            size="small"
+            value="+"
+            onClick={quantityChangeHandler}
+          >
+            <AddIcon />
+          </Button>
+          {orderType === "sell" ? (
+            <Button size="small" value="Max" onClick={quantityChangeHandler}>
+              Max
+            </Button>
+          ) : (
+            ""
+          )}
+        </ButtonGroup>
+      </Typography>
+      <Typography>
+        Order value: ${orderValue}
+        {errMsg ? <Alert severity="error">{errMsg}</Alert> : ""}
+      </Typography>
+      <Typography>
+        {!orderSuccess ? (
+          <LoadingButton
+            style={{ textTransform: "none" }}
+            size="small"
+            variant="outlined"
+            loading={loadingOrder}
+            onClick={submitHandler}
+          >
+            Confirm
+          </LoadingButton>
         ) : (
-          ""
+          <Alert severity="success">Order completed successfully </Alert>
         )}
-      </div>
-      Order value: ${orderValue}
-      {errMsg ? <p className={classes.error}>{errMsg}</p> : ""}
-      {!loadingOrder && !orderSuccess ? (
-        <Button title="Confirm" onClick={submitHandler} />
-      ) : orderSuccess ? (
-        <p className={classes.success}>Order completed successfully </p>
-      ) : (
-        <LoadingSpinner />
-      )}
+      </Typography>
     </form>
   );
 };

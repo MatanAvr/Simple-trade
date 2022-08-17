@@ -47,6 +47,7 @@ export const AuthContextProvider = (props) => {
 
   const loginHandler = async (email, pw) => {
     const url = `${BASE_URL}${"/users/login"}`;
+    errorHandler("clear");
 
     const dataToSend = {
       email: email,
@@ -109,6 +110,8 @@ export const AuthContextProvider = (props) => {
   };
 
   const signupHandler = async (email, name, pw) => {
+    errorHandler("clear");
+
     const url = `${BASE_URL}${"/users"}`;
     const dataToSend = {
       username: name,
@@ -182,6 +185,12 @@ export const AuthContextProvider = (props) => {
   };
 
   const errorHandler = (msg = null) => {
+    // console.log(msg);
+    if (msg === "clear") {
+      setErrorMsg("");
+      setError(false);
+      return;
+    }
     const current = error;
     if (current) {
       setErrorMsg("");
@@ -189,7 +198,6 @@ export const AuthContextProvider = (props) => {
     if (msg) {
       setErrorMsg(msg);
     }
-
     setError(!current);
   };
 

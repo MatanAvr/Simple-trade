@@ -6,13 +6,11 @@
   height: 100%;
 }
 .graphUI {
+  margin-top: 10px;
   display: flex;
   width: auto;
   flex-direction: row;
   justify-content: center;
-  border: 1px solid rgba(0, 99, 132, 01);
-  border-radius: 10px;
-  background-color: rgba(0, 99, 132, 0.25);
 }
 .chart {
   width: 100%;
@@ -20,6 +18,9 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .graphContainer {
+    padding: 0.5rem 0.5rem;
+  }
   .graphUI {
     width: 90%;
   }

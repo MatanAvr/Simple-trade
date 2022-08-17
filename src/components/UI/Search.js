@@ -1,20 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../../store/auth-context";
-import classes from "./Search.module.css";
-import searchIcon from "../img/search.png";
-import Button from "./Button";
 import stocksArr from "../../store/stocksArr";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 
 const english = /^[A-Za-z]*$/;
 
 const Search = (props) => {
   const authCtx = useContext(AuthContext);
   const [symbol, setSymbol] = useState("");
-  const [stocksList, setStocksList] = useState("");
+  const [stocksList, setStocksList] = useState([]);
   const [showModalOnce, setShowModalOnce] = useState(true);
   const [inputError, setInputError] = useState(false);
-  const showNote = props.showNote ? true : false;
-  useEffect(() => {});
+  const [inputValue, setInputValue] = useState("");
 
   const updateStockList = (stockName) => {
     const rawList = stocksArr.filter(
@@ -26,80 +24,67 @@ const Search = (props) => {
 
   let timer;
 
-  const changeHandler = (event) => {
-    event.preventDefault();
+  const changeHandler = (event, value) => {
     setInputError(false);
-
-    if (!english.test(event.target.value)) {
+    if (!english.test(value)) {
       setInputError(true);
       if (showModalOnce) {
-        authCtx.toggleError("Valid symbol characters: A-Z/a-z");
+        authCtx.toggleError("Valid characters: A-Z/a-z");
         setShowModalOnce(false);
       }
       return;
     }
 
-    if (event.type === "submit") {
-      authCtx.loadTradeScreen(symbol);
+    if (!value || value.trim().length === 0) {
+      setSymbol(value);
+      return;
+    }
+
+    if (
+      value &&
+      (event?.type === "submit" ||
+        event?.type === "keydown" ||
+        event?.type === "click")
+    ) {
+      authCtx.loadTradeScreen(value);
+      setSymbol("");
+      setInputValue("");
+      setStocksList([]);
       return;
     }
 
     if (timer) clearTimeout(timer); //clear existing timer
 
-    if (event.target.value.trim().length === 0) {
-      setSymbol(event.target.value);
-      return;
-    }
-
     timer = setTimeout(() => {
-      updateStockList(event.target.value.toUpperCase());
+      updateStockList(value?.toUpperCase());
     }, 50);
 
-    setSymbol(event.target.value);
+    setSymbol(value);
   };
 
   return (
     <>
-      <form
-        className={classes.searchBar}
-        onSubmit={changeHandler}
-        autoComplete="off"
-      >
-        <input
-          className={inputError ? classes.error : ""}
-          name="stocklist"
-          list="stocks"
-          type="text"
-          minLength={1}
-          maxLength={6}
-          value={symbol}
-          placeholder="Valid characters: A-Z/a-z"
-          onChange={changeHandler}
-        />
-        <datalist id="stocks" className={classes.autofill}>
-          {stocksList ? (
-            stocksList.map((element) => (
-              <option key={Math.random()} value={element} />
-            ))
-          ) : (
-            <option value="EMPTY" />
-          )}
-        </datalist>
-
-        <Button
-          type="icon"
-          onClick={authCtx.loadTradeScreen.bind(null, symbol)}
-        >
-          <img alt="Search" src={searchIcon} draggable="false" />
-        </Button>
-        {/* <br />
-        <p className={classes.note}>Valid symbol characters: A-Z/a-z</p> */}
-      </form>
-      {/* {showNote ? (
-        <p className={classes.note}>Valid symbol characters: A-Z/a-z</p>
-      ) : (
-        ""
-      )} */}
+      <Autocomplete
+        size="small"
+        id="stocksList"
+        options={stocksList}
+        sx={{ width: 250 }}
+        value={symbol}
+        inputValue={inputValue}
+        autoComplete={true}
+        autoSelect={true}
+        isOptionEqualToValue={(option, value) => option === value}
+        onChange={(event, value) => {
+          changeHandler(event, value);
+        }}
+        onInputChange={(event, value) => {
+          setInputValue(value.toUpperCase());
+          updateStockList(value.toUpperCase());
+        }}
+        renderInput={(stocksList) => (
+          <TextField size="small" {...stocksList} label="Search for a stock" />
+        )}
+      />
     </>
   );
 };

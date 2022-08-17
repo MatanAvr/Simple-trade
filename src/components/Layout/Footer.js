@@ -1,12 +1,15 @@
 import React from "react";
 import classes from "./Footer.module.css";
+import { Typography } from "@mui/material";
 
 const Footer = () => {
   return (
     <p className={classes.footer}>
-      <span>All rights reserved &#169;</span>
-      <a href="mailto:simpletrade.isr@gmail.com">Contact us</a>
-      <span>Version: 1.0.0</span>
+      <Typography variant="caption">All rights reserved &#169;</Typography>
+      <Typography variant="caption">
+        <a href="mailto:simpletrade.isr@gmail.com">Contact us</a>
+      </Typography>
+      <Typography variant="caption">Version: 1.0.1</Typography>
     </p>
   );
 };

@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import LoadingSpinner from "../UI/LoadingSpinner";
-import classes from "./PortfolioWithUpdate.module.css";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import { Button, Chip } from "@mui/material";
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 
 const BASE_URL = "https://simple-trade-israel-dev.herokuapp.com";
 
-const PortfolioWithUpdate = (props) => {
+const PortfolioItemMUI = (props) => {
   const authCtx = useContext(AuthContext);
   const token = authCtx.token;
   const [currentPrice, setCurrentPrice] = useState("");
@@ -46,32 +49,35 @@ const PortfolioWithUpdate = (props) => {
   useEffect(() => {
     getCurrentPrice(currentSymbol);
   }, []);
-
+  const backgroundColor = props.index % 2 === 0 ? "rgba(25,118,210,0.2)" : "";
   return (
-    <>
-      {`${props.item.symbol}, Qty: ${props.item.quantity},
-  average buy price: $${props.item.price.toFixed(2)}`}
-      {loading ? (
-        <LoadingSpinner size="small" />
-      ) : (
-        <div>
-          {" "}
-          P/L:
-          <span
-            className={
-              currentPrice > 0
-                ? classes.green
-                : currentPrice < 0
-                ? classes.red
-                : ""
+    <TableRow key={props.item._id} style={{ backgroundColor: backgroundColor }}>
+      <TableCell align="center">{props.item.symbol}</TableCell>
+      <TableCell align="center">{props.item.quantity}</TableCell>
+      <TableCell align="center">{props.item.price.toFixed(2)}$</TableCell>
+      <TableCell align="right">
+        {loading ? (
+          <LoadingSpinner size="small" />
+        ) : (
+          <Chip
+            label={`${currentPrice}%`}
+            size="small"
+            color={
+              currentPrice > 0 ? "success" : currentPrice < 0 ? "error" : "info"
             }
-          >
-            {currentPrice}%
-          </span>
-        </div>
-      )}
-    </>
+          />
+        )}
+      </TableCell>
+      <TableCell align="center">
+        <Button
+          size="small"
+          onClick={authCtx.loadTradeScreen.bind(null, props.item.symbol)}
+        >
+          <DoubleArrowIcon size="small" />
+        </Button>
+      </TableCell>
+    </TableRow>
   );
 };
 
-export default PortfolioWithUpdate;
+export default PortfolioItemMUI;
